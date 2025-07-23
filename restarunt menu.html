@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucifer Restaurant | Hellishly Good Food</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff2d2d;
+            --primary-dark: #cc0000;
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
+            --gray: #333;
+            --light-gray: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: radial-gradient(circle at 10% 20%, rgba(255, 45, 45, 0.1) 0%, rgba(26, 26, 26, 1) 90%);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        /* ===== LOGIN SCREEN ===== */
+        .login-container {
+            background: rgba(30, 30, 30, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 45, 45, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .logo {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 45, 45, 0.5);
+        }
+
+        .login-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            background: rgba(50, 50, 50, 0.7);
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 45, 45, 0.3);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 45, 45, 0.4);
+        }
+
+        .error-message {
+            color: var(--primary);
+            margin-top: 1rem;
+            display: none;
+        }
+
+        /* ===== MENU SCREEN ===== */
+        .menu-container {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .logout-btn {
+            background: var(--gray);
+            color: var(--light);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: var(--primary);
+        }
+
+        .menu-category {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .menu-item {
+            background: rgba(40, 40, 40, 0.8);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 45, 45, 0.1);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 45, 45, 0.3);
+        }
+
+        .item-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .item-desc {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .add-to-cart {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .add-to-cart:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Screen -->
+        <div class="login-container" id="loginContainer">
+            <div class="logo">
+                <i class="fas fa-fire"></i>
+            </div>
+            <h1 class="login-title">Lucifer Restaurant</h1>
+            <p style="margin-bottom: 2rem; color: #aaa;">Hellishly Good Food</p>
+            
+            <div class="form-group">
+                <label for="userId">Username</label>
+                <input type="text" id="userId" placeholder="Enter your username">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password">
+            </div>
+            
+            <button class="login-btn" onclick="login()">Enter the Inferno</button>
+            <p class="error-message" id="errorMessage">Invalid credentials. Try again.</p>
+        </div>
+        
+        <!-- Menu Screen (Hidden until login) -->
+        <div class="menu-container" id="menuContainer">
+            <div class="header">
+                <h1><i class="fas fa-fire" style="margin-right: 10px;"></i> Lucifer Restaurant</h1>
+                <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+            
+            <div class="menu-category">
+                <h2 class="category-title">Appetizers</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3 class="item-name">Hellfire Wings</h3>
+                        <p class="item-desc">Crispy chicken wings glazed in our signature hellfire sauce. Not for the faint-hearted.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$9.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <h3 class="item-name">Devil's Bruschetta</h3>
+                        <p class="item-desc">Toasted bread topped with spicy tomato, garlic, and a hint of chili.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$7.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <h3 class="item-name">Sinful Cheese Dip</h3>
+                        <p class="item-desc">A blend of three cheeses with jalapeños and a touch of smoky paprika.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$8.49</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-category">
+                <h2 class="category-title">Main Courses</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3 class="item-name">Lucifer's Ribeye</h3>
+                        <p class="item-desc">16oz prime ribeye, chargrilled to perfection with inferno seasoning.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$24.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <h3 class="item-name">Pasta Diablo</h3>
+                        <p class="item-desc">Spaghetti with a creamy tomato sauce infused with ghost peppers.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$16.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <h3 class="item-name">Damned Burger</h3>
+                        <p class="item-desc">Double patty, bacon, ghost pepper cheese, and our signature hell sauce.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$14.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-category">
+                <h2 class="category-title">Drinks</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3 class="item-name">Inferno Margarita</h3>
+                        <p class="item-desc">Tequila, lime, and a splash of habanero syrup. Served flaming.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$10.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <h3 class="item-name">Hell's Brew IPA</h3>
+                        <p class="item-desc">A locally brewed IPA with a fiery aftertaste.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$6.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <h3 class="item-name">Satan's Lemonade</h3>
+                        <p class="item-desc">Sweet, sour, and with a hidden spicy kick.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$5.49</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            const userId = document.getElementById('userId').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (userId === 'harish' && password === '123') {
+                // Successful login
+                document.getElementById('loginContainer').style.display = 'none';
+                document.getElementById('menuContainer').style.display = 'block';
+                errorMessage.style.display = 'none';
+            } else {
+                // Failed login
+                errorMessage.style.display = 'block';
+                document.getElementById('password').value = '';
+            }
+        }
+        
+        function logout() {
+            document.getElementById('loginContainer').style.display = 'block';
+            document.getElementById('menuContainer').style.display = 'none';
+            document.getElementById('userId').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+
+        // Add to Cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const itemName = this.parentElement.parentElement.querySelector('.item-name').textContent;
+                const itemPrice = this.parentElement.querySelector('.item-price').textContent;
+                alert(`Added to cart: ${itemName} (${itemPrice})`);
+            });
+        });
+    </script>
+</body>
+</html>
