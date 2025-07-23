@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucifer Healthcare - User Login</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .login-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background-color: #6a11cb;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        
+        .login-form {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        .login-btn {
+            background-color: #6a11cb;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: #4a0ba3;
+        }
+        
+        .healthcare-info {
+            display: none;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+        
+        .healthcare-info h2 {
+            color: #6a11cb;
+            margin-top: 0;
+        }
+        
+        .info-section {
+            margin-bottom: 20px;
+        }
+        
+        .info-section h3 {
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        
+        .logout-btn {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        .error-message {
+            color: #ff4757;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-container" id="loginContainer">
+            <div class="header">
+                <h1>Lucifer Healthcare</h1>
+                <p>Secure Patient Portal</p>
+            </div>
+            
+            <div class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="userId">User ID</label>
+                    <input type="text" id="userId" placeholder="Enter your user ID">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                
+                <button class="login-btn" onclick="login()">Login</button>
+                <p class="error-message" id="errorMessage">Invalid user ID or password. Please try again.</p>
+            </div>
+            
+            <div class="healthcare-info" id="healthcareInfo">
+                <h2>Lucifer Healthcare Services</h2>
+                
+                <div class="info-section">
+                    <h3>About Us</h3>
+                    <p>Lucifer Healthcare is a premier healthcare provider specializing in innovative treatments and patient-centered care. Founded in 2010, we have grown to become a leader in medical excellence with 15 facilities across the country.</p>
+                </div>
+                
+                <div class="info-section">
+                    <h3>Our Specialties</h3>
+                    <ul>
+                        <li><strong>Cardiology:</strong> Advanced heart care with state-of-the-art diagnostic tools</li>
+                        <li><strong>Oncology:</strong> Comprehensive cancer treatment programs</li>
+                        <li><strong>Neurology:</strong> Specialized care for brain and nervous system disorders</li>
+                        <li><strong>Orthopedics:</strong> Joint replacement and sports medicine expertise</li>
+                        <li><strong>Pediatrics:</strong> Compassionate care for our youngest patients</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h3>Patient Portal Features</h3>
+                    <p>As a registered patient, you can:</p>
+                    <ul>
+                        <li>View your medical records and test results</li>
+                        <li>Schedule appointments with specialists</li>
+                        <li>Communicate securely with your healthcare team</li>
+                        <li>Request prescription refills</li>
+                        <li>Access educational resources about your condition</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h3>Quality Metrics</h3>
+                    <p>Lucifer Healthcare consistently ranks above national averages for patient outcomes:</p>
+                    <ul>
+                        <li>98% patient satisfaction rate</li>
+                        <li>30% lower readmission rates than national average</li>
+                        <li>Joint Commission Accredited</li>
+                        <li>Ranked in Top 10 Healthcare Systems by HealthGrades</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h3>Contact Information</h3>
+                    <p><strong>Main Hospital:</strong> 123 Medical Center Drive, Healthcare City, HC 12345</p>
+                    <p><strong>Phone:</strong> (555) 123-4567</p>
+                    <p><strong>Emergency Services:</strong> Available 24/7</p>
+                    <p><strong>Email:</strong> info@luciferhealthcare.com</p>
+                </div>
+                
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            const userId = document.getElementById('userId').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Check credentials (user: harish, password: 123)
+            if (userId === 'harish' && password === '123') {
+                // Successful login
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('healthcareInfo').style.display = 'block';
+                errorMessage.style.display = 'none';
+            } else {
+                // Failed login
+                errorMessage.style.display = 'block';
+            }
+        }
+        
+        function logout() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('healthcareInfo').style.display = 'none';
+            document.getElementById('userId').value = '';
+            document.getElementById('password').value = '';
+        }
+    </script>
+</body>
+</html>
