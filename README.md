@@ -1,4 +1,4 @@
-📘 CodSoft UI/UX Internship - Harish
+📘 CodSoft UI/UX Internship - Dinesh
 👨‍💻 About Me
 Hello! I’m Harish, currently pursuing my 3rd year of B.Tech in Artificial Intelligence and Data Science. As part of my career development and design exploration, I had the opportunity to intern at CodSoft under the UI/UX Design domain.
 
@@ -7,7 +7,7 @@ Internship Role: UI/UX Design Intern
 
 Organization: CodSoft
 
-Duration: [Specify duration if known, e.g., June 2025 – July 2025]
+Duration: 01-01-2025 to 10-02-2026
 
 Domain: User Interface & User Experience Design
 
