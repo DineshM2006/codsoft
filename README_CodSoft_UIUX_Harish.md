@@ -1,7 +1,7 @@
-# 📘 CodSoft UI/UX Internship - Harish
+# 📘 CodSoft UI/UX Internship - Dinesh
 
 ## 👨‍💻 About Me
-Hello! I’m **Harish**, currently pursuing my **3rd year of B.Tech in Artificial Intelligence and Data Science**. As part of my career development and design exploration, I had the opportunity to intern at **CodSoft** under the **UI/UX Design domain**.
+Hello! I’m Dinesh, currently pursuing my **3rd year of B.Tech in Artificial Intelligence and Data Science**. As part of my career development and design exploration, I had the opportunity to intern at **CodSoft** under the **UI/UX Design domain**.
 
 ---
 
